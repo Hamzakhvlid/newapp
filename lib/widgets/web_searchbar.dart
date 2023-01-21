@@ -1,4 +1,4 @@
-import 'package:clickablesvg/screens/data_provider.dart';
+import 'package:clickablesvg/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -63,17 +63,17 @@ class _WebSearchBarState extends ConsumerState<WebSearchBar> {
                     focusColor: Colors.green,
                     filled: true,
                     fillColor: Color.fromARGB(255, 233, 233, 233),
-                    hintText: "Serach ",
+                    hintText: "search".tr(),
                     hintStyle:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
               )),
           IconButton(
               onPressed: (() {
-                if (ref.read(savedLocale) == 'en') {
-                  ref.read(savedLocale.notifier).update((state) => 'en');
-                  context.locale;
+                if (context.locale == Locale('en')) {
+                  //to do change locale
+                  context.setLocale(Locale('ar'));
                 } else {
-                  ref.read(savedLocale.notifier).update((state) => 'ar');
+                  context.setLocale(Locale('en'));
                 }
               }),
               icon: Icon(

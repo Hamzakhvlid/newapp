@@ -46,6 +46,8 @@ dependencies:
   bot_toast: ^4.0.3
   shimmer: ^2.0.0
   easy_localization: ^3.0.1
+  widget_loading: ^0.3.2
+  
   
 
   

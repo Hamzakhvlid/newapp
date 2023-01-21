@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:clickablesvg/screens/data_provider.dart';
+import 'package:clickablesvg/data_provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +36,7 @@ class ItemTileState extends ConsumerState<ItemTile> {
             }
             ref
                 .read(colorMap.notifier)
-                .update((state) => ref.watch(savedLocale)=='en'?  imagesLabel[widget.title.split('-').first]!:arabicImageLabel[widget.title.split('-').first]!    );
+                .update((state) =>  imagesLabel[widget.title.split('-').first]!   );
             ref.read(isSearch.notifier).update((state) => false);
             ref.read(textControlller).clear();
             ref
@@ -57,15 +57,24 @@ class ItemTileState extends ConsumerState<ItemTile> {
 
               
               BotToast.showAttachedWidget(
-                  attachedBuilder: (_) => Card(
+                  attachedBuilder: (_) => Container(
                         color: labels[widget.title],
                         key: UniqueKey(),
+                        height: 50,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              imagesLabel[image]![labels[widget.title]] ?? ""),
+                          child: Card(
+                            elevation: 0,
+                            color: labels[widget.title],
+                            child: Text(
+                                imagesLabel[image]![labels[widget.title]] ?? "").tr(),
+                          ),
                         ),
                       ),
+
+
+                      
+
                   duration: Duration(seconds: 10),
                   target: targetOffset);
             });
@@ -95,7 +104,7 @@ class ItemTileState extends ConsumerState<ItemTile> {
                       ? Color.fromARGB(255, 127, 127, 127)
                       : Colors.transparent,
               leading: widget.icon,
-              title: Text(widget.title.split('-').last),
+              title: Text(widget.title.split('-').last).tr(),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 8.0),
               ),

@@ -1,4 +1,4 @@
-import 'package:clickablesvg/screens/data_provider.dart';
+import 'package:clickablesvg/data_provider.dart';
 import 'package:clickablesvg/widgets/item_tile.dart';
 import 'package:clickablesvg/widgets/mobile_bars.dart';
 import 'package:flutter/material.dart';

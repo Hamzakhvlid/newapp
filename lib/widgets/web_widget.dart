@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:clickablesvg/screens/data_provider.dart';
+import 'package:clickablesvg/data_provider.dart';
 import 'package:clickablesvg/widgets/item_list.dart';
 import 'package:clickablesvg/widgets/web_searchbar.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +24,12 @@ class webWidget extends ConsumerWidget {
                 SizedBox(height: 10,),
                 WebSearchBar(),
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * .83,
+                    height: ref.read(searchList)!=floors? MediaQuery.of(context).size.height * .63:MediaQuery.of(context).size.height * .83,
                     width: MediaQuery.of(context).size.width * .15,
-                    child: ItemList())
+                    child: ItemList()),
+                   ref.read(searchList)!=floors?  SizedBox(height: MediaQuery.of(context).size.height*.20,
+                    width: MediaQuery.of(context).size.width*.15,
+                    child: Image.asset("assets/way_finding.png"),):Center()
               ],
             )),
         Container(
@@ -41,16 +44,18 @@ class webWidget extends ConsumerWidget {
             onPositionUpdate: (Offset position) {},
             onScaleUpdate: (double scale, double zoom) {},
             child: Center(
-              child: GestureDetector(
+              child: InkWell(
                 onTapDown: (details) {
-                  print(details.localPosition);
-                  print("---------------Orignal offset");
+                  
                   ref.read(offsetProvider.notifier).update((state) => Offset(
-                      details.localPosition.dx + 170,
+                      details.localPosition.dx ,
                       details.localPosition.dy));
                 },
+               
+                
                 child: Container(
                     alignment: Alignment.center,
+                    
                     child: PixelColor.assetImage(
                       path: ref.watch(imageProvider),
                       onHover: onHover,

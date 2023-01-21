@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:clickablesvg/screens/data_provider.dart';
+import 'package:clickablesvg/data_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -74,7 +74,7 @@ class MobileBar extends ConsumerWidget {
                     ? Colors.white
                     : Colors.black),
             textAlign: TextAlign.center,
-          ),
+          ).tr(),
         ),
       ),
     );

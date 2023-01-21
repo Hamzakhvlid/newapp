@@ -20,7 +20,7 @@ void main() async {
     Locale('en',''),
     Locale('ar',''),
     
-  ], path: 'translations/', child: const ProviderScope(child: MyApp())));
+  ], path: 'assets/translations', child: const ProviderScope(child: MyApp())));
 
   
 }
